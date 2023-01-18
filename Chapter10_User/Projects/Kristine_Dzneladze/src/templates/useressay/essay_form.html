@@ -1,0 +1,40 @@
+{% extends "layouts/base.html"%}
+{% block content %}
+<h1 style="text-align: center; color:rgb(8, 180, 192)">Send your essay here</h1>
+<div class="container mt-3 bg-white h-75 rounded">
+
+    {% for field,error in user_essay.errors.items() %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{ message }}
+    </div>
+    {%endfor%}
+    {% endwith %}
+
+    <form method="post" style="color: rgb(255, 0, 234);" enctype="multipart/form-data">
+        {{ user_essay.hidden_tag() }}
+        {{ user_essay.firstname (class="form-control", placeholder = user_essay.firstname.label.text)}} <br>
+        {{ user_essay.lastname (class="form-control", placeholder = user_essay.lastname.label.text)}}<br>
+        {{ user_essay.email (class="form-control", placeholder = user_essay.email.label.text)}}<br>
+        {{ user_essay.writer_experience (style="list-style: none; margin-left:-22px", placeholder =
+        user_essay.writer_experience.label.text) }}<br>
+        <p>Which Type of essay are you working on:</p>
+        {{ user_essay.writer_field (class="btn-group btn btn-warning dropdown-toggle" , placeholder =
+        user_essay.writer_field.label.text) }}<br><br>
+        {{ user_essay.essay_description (class="form-control", placeholder =
+        user_essay.essay_description.label.text)}}<br>
+        <p>Please upload your essay here:</p>
+        {{user_essay.essay_file(accept=".txt,.pdf")}} <br><br>
+
+        {{ user_essay.submit }}
+
+    </form><br>
+</div>
+
+{% endblock %}

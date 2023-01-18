@@ -1,0 +1,32 @@
+{% from "macros/macro.html" import is_active%}
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {{is_active(request.endpoint, 'main.home')}}" aria-current="page"
+            href="{{url_for('main.home')}}">Homepage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{is_active(request.endpoint, 'registration.registration')}}" aria-current="page"
+            href="{{url_for('registration.registration')}}">Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{is_active(request.endpoint, 'login.login')}}" aria-current="page"
+            href="{{url_for('login.login')}}">Login</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link {{is_active(request.endpoint, 'essay.essay_form')}}" href="{{url_for('essay.essay_form')}}">Upload Essay</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{is_active(request.endpoint, 'book.books')}}" href="{{url_for('book.books')}}">Books</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h1 style="text-align: center; color:rgb(8, 180, 192)">Registration</h1>
+<div class="container mt-3 bg-white h-75 rounded">
+
+    {% for field,error in registerform.errors.items() %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{ message }}
+    </div>
+    {%endfor%}
+    {% endwith %}
+
+    <form method="post" style="color: rgb(255, 0, 234);" enctype="multipart/form-data">
+        {{ registerform.hidden_tag() }}
+        {{ registerform.username (class="form-control", placeholder = registerform.username.label.text)}} <br>
+        {{ registerform.email (class="form-control", placeholder = registerform.email.label.text)}}<br>
+        {{ registerform.password (class="form-control", placeholder = registerform.password.label.text)}}<br>
+        {{ registerform.confirmation (class="form-control", placeholder = registerform.confirmation.label.text)}}
+        <br>
+        {{ registerform.submit }}
+
+    </form><br>
+</div>
+
+
+</div>
+{% endblock %}
