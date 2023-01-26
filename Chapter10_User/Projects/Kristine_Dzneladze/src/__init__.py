@@ -5,8 +5,9 @@ from src.views.books.routes import book_blueprint
 from src.views.useressay.routes import useressay_blueprint
 from src.views.registration.routes import registration_blueprint
 from src.views.login.routes import login_blueprint
-from src.extensions import db , migrate
+from src.extensions import db , migrate, login_manager
 from src.commands import init_db , populate_db
+from src.models.registration import User
 
 BLUEPRINTS = [main_blueprint,book_blueprint,useressay_blueprint, registration_blueprint,login_blueprint]
 COMMANDS = [init_db, populate_db]
@@ -30,7 +31,12 @@ def register_blueprint(app):
 def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db)
+    login_manager.init_app(app)
+    login_manager.login_view = "login.login"
 
+    @login_manager.user_loader
+    def load_user(_id):
+        return User.query.get(_id)
     
 def register_commands(app):
     for command in COMMANDS:

@@ -20,8 +20,7 @@
 
     <form method="post" style="color: rgb(255, 0, 234);" enctype="multipart/form-data">
         {{ loginform.hidden_tag() }}
-        {{ loginform.username (class="form-control", placeholder = loginform.username.label.text)}} <br>
-        {{ loginform.email (class="form-control", placeholder = loginform.email.label.text)}}<br>
+        {{ loginform.email (class="form-control", placeholder = loginform.email.label.text) }}<br>
         {{ loginform.password (class="form-control", placeholder = loginform.password.label.text)}}<br>
         <br>
         {{ loginform.submit }}

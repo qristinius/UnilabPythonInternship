@@ -8,4 +8,3 @@ books = [
             ("Around the World in Eighty Days", "Jules Verne", "Science Fiction", "https://www.bookshop.ge/content/uploads/products/9781509827855.jpg"),
             ("Journey to the Centre of the Earth", "Jules Verne", "Science Fiction", "https://www.bookshop.ge/content/uploads/products/9781509827886.jpg")
         ]
-

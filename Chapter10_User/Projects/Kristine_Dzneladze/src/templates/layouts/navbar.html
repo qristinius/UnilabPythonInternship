@@ -12,6 +12,7 @@
           <a class="nav-link {{is_active(request.endpoint, 'main.home')}}" aria-current="page"
             href="{{url_for('main.home')}}">Homepage</a>
         </li>
+        {% if not current_user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link {{is_active(request.endpoint, 'registration.registration')}}" aria-current="page"
             href="{{url_for('registration.registration')}}">Registration</a>
@@ -20,9 +21,14 @@
           <a class="nav-link {{is_active(request.endpoint, 'login.login')}}" aria-current="page"
             href="{{url_for('login.login')}}">Login</a>
         </li>
+        {% else %}
+        <a class="nav-link" href="{{url_for('login.logout')}}">Logout </a>
+        {% endif %}
+       {% if current_user.is_authenticated %}
        <li class="nav-item">
           <a class="nav-link {{is_active(request.endpoint, 'essay.essay_form')}}" href="{{url_for('essay.essay_form')}}">Upload Essay</a>
         </li>
+       {% endif %} 
         <li class="nav-item">
           <a class="nav-link {{is_active(request.endpoint, 'book.books')}}" href="{{url_for('book.books')}}">Books</a>
         </li>

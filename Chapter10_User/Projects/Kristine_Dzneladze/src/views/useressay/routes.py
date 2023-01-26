@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, flash
+from flask_login import login_required
 from os import path, getcwd , sep , pardir
 from src.views.useressay.forms import EssayForm
 from werkzeug.utils import secure_filename
@@ -9,6 +10,7 @@ from src.extensions import db
 useressay_blueprint = Blueprint("essay", __name__, template_folder="templates")
 
 @useressay_blueprint.route("/essay", methods=["GET", "POST"])
+@login_required
 def essay_form():
     form = EssayForm()
     if form.validate_on_submit():
