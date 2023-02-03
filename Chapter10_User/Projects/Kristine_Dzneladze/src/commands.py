@@ -34,7 +34,6 @@ def populate_db():
     click.echo(admin_role)
 
     admin_user_role  = UserRole(user_id = admin_user.id, role_id = admin_role.id)
-    click.echo(admin_user_role)
     admin_user_role.create()
     admin_user_role.save()
 

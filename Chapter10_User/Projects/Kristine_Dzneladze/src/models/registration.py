@@ -22,7 +22,7 @@ class User(BaseModel , UserMixin):
     def _check_password(self,password):
         return check_password_hash(self.password, password)
 
-    def has_roles(self, role):
+    def has_role(self, role):
         return role in [userrole.name for userrole in self.roles]
 
 
